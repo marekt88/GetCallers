@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background: url('https://raw.githubusercontent.com/marekt88/impofai/master/Github%20images/impofai%20multiple%20bg.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .main-text {
+            font-size: 3em;
+            color: #FFFFFF;
+            font-weight: 700;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .subheading {
+            font-size: 2em;
+            color: #1500ff;
+            margin-top: 10px;
+        }
+
+        .arrow {
+            position: fixed;
+            bottom: 120px;
+            right: 250px;
+            font-size: 1.5em;
+            color: #00FFFF;
+            animation: bounce 2s infinite;
+        }
+
+        .arrow::before {
+            content: '↘️';
+            display: block;
+        }
+
+        .arrow-text {
+            position: fixed;
+            bottom: 120px;
+            right: 300px;
+            font-size: 1.7em;
+            color: #000000;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="main-text">AI Voice Assistant for federal government filing requirement</div>
+        <div class="subheading">Made for GetCallers</a></div>
+    </div>
+    <div class="arrow-text">Call with demo agent</div>
+    <div class="arrow"></div>
+
+    <!-- The rest of your script remains unchanged -->
+    <script>
+        var vapiInstance = null;
+        const assistant = {
+        "name": "SAAS upgrade",
+        "voice": {
+            "voiceId": "asteria",
+            "provider": "deepgram"
+        },
+        "model": {
+            "model": "gpt-4o-mini",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "### Overview: **Conversation Node: Determine Filing Requirements** **Objective:** Determine if the user needs to file to avoid fines and provide guidance on next steps. --- ### Dialogue Example: **User:** Hi **Agent:** Do you have more than 20 employees? **User Response 1:** Yes **Agent:** Ok, did your company have more than 5 million dollars in revenue last year? **User Response 2:** No **Agent:** You do need to file to avoid fines. Go to [fileboi.org](https://fileboi.org) and use the promo code that we’ll be sending you shortly via text. Again, that website is [fileboi.org](https://fileboi.org). Don't forget to file the Beneficial Ownership Report required for all small businesses by the federal government to avoid $500-a-day fines. Take our free quiz to see if you need to file or file today at fileboi dot org! All the required links will be mentioned in the text message. --- ### Alternative Response Handling: If the user's answers differ from the expected sequence: **User:** Hi **Agent:** Do you have more than 20 employees? **User Response 1:** No **Agent:** Based on your response, this new requirement may not directly apply to your business. However, it's important to verify whether it affects you. Please check the link in the message that will be sent after this call for further details on how to assess your filing obligations. (OR) **User:** Hi **Agent:** Do you have more than 20 employees? **User Response 1:** Yes **Agent:** Did your company have more than 5 million dollars in revenue last year? **User Response 2:** Yes **Agent:** Based on your response, this new requirement may not directly apply to your business. However, I encourage you to check the link in the message you’ll receive after this call, which provides further guidance on assessing your filing needs. --- ### Aditional questions handeling: Do not answer any other questions from the user. Mention that they can forward their questions to support email provided in the text message which will be sent to the user after the call."
+                }
+            ],
+            "provider": "openai",
+            "maxTokens": 250,
+            "temperature": 0.7
+        },
+        "recordingEnabled": true,
+        "firstMessage": "This is an urgent message for small business owners: There is a new federal government filing requirement that may affect your business. Most small businesses in the US must file a beneficial ownership information report with the US Treasury department to avoid $500/day fines come January 1st. So, to see if you need to file, let me ask: do you have more than 20 employees?",
+        "voicemailMessage": "Hi, you've reached Leo at IMPOFAI. Sorry I missed your call. Please leave a message, and I'll get back to you as soon as possible.",
+        "endCallMessage": "Thanks for hearing me out. It was great talking to you. Have a wonderful day!",
+        "transcriber": {
+            "model": "nova-2",
+            "language": "en",
+            "provider": "deepgram"
+        },
+        "endCallFunctionEnabled": false,
+        "dialKeypadFunctionEnabled": false,
+        "hipaaEnabled": false,
+        "metadata": {
+            "user_email": "marekt0808@gmail.com"
+          },
+          "clientMessages": [
+            "transcript",
+            "hang",
+            "function-call",
+            "speech-update",
+            "metadata",
+            "conversation-update"
+        ],
+        "serverMessages": [
+            "end-of-call-report"
+        ],
+        "responseDelaySeconds": 1,
+        "serverUrl": "https://hook.eu2.make.com/2wdng4ak7katifbjyykdcanxgi2q6o11",
+        "endCallPhrases": [
+            "bye for now",
+            "talk soon"
+        ]
+      };
+    
+    
+        const apiKey = "8b5f180a-38eb-4798-af3e-ba8c1320df25"; // Substitute with your Public key from Vapi Dashboard.
+        const buttonConfig = {
+          position: "bottom-right", // "bottom" | "top" | "left" | "right" | "top-right" | "top-left" | "bottom-left" | "bottom-right"
+          offset: "40px", // decide how far the button should be from the edge
+          width: "50px", // min-width of the button
+          height: "50px", // height of the button
+          idle: { // button state when the call is not active.
+            color: `rgb(93, 254, 202)`, 
+            type: "pill", // or "round"
+            title: "Have a quick question?", // only required in case of Pill
+            subtitle: "Talk with our AI assistant", // only required in case of pill
+            icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone.svg`,
+          },
+          loading: { // button state when the call is connecting
+            color: `rgb(93, 124, 202)`,
+            type: "pill", // or "round"
+            title: "Connecting...", // only required in case of Pill
+            subtitle: "Please wait", // only required in case of pill
+            icon: `https://unpkg.com/lucide-static@0.321.0/icons/loader-2.svg`,
+          },
+          active: { // button state when the call is in progress or active.
+            color: `rgb(255, 0, 0)`,
+            type: "pill", // or "round"
+            title: "Call is in progress...", // only required in case of Pill
+            subtitle: "End the call.", // only required in case of pill
+            icon: `https://unpkg.com/lucide-static@0.321.0/icons/phone-off.svg`,
+          },
+        };
+    
+      
+        (function (d, t) {
+          var g = document.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+          g.src =
+            "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+          g.defer = true;
+          g.async = true;
+          s.parentNode.insertBefore(g, s);
+      
+          g.onload = function () {
+            vapiInstance = window.vapiSDK.run({
+              apiKey: apiKey, // mandatory
+              assistant: assistant, // mandatory
+              config: buttonConfig, // optional
+            });
+    
+            vapiInstance.on('speech-start', () => {
+              console.log('Speech has started');
+            });
+    
+            vapiInstance.on('speech-end', () => {
+              console.log('Speech has ended');
+            });
+    
+            vapiInstance.on('call-start', () => {
+              console.log('Call has started');
+            });
+    
+            vapiInstance.on('call-end', () => {
+              console.log('Call has stopped');
+            });
+    
+            vapiInstance.on('volume-level', (volume) => {
+              console.log(`Assistant volume level: ${volume}`);
+            });
+    
+            // Function calls and transcripts will be sent via messages
+            vapiInstance.on('message', (message) => {
+              console.log(message);
+            });
+    
+            vapiInstance.on('error', (e) => {
+              console.error(e)
+            });
+    
+          };
+        })(document, "script");
+      
+      </script>
+</body>
+</html>
